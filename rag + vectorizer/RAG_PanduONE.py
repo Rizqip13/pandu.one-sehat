@@ -6,9 +6,9 @@ import numpy as np
 # === Configurations ===
 GENAI_API_KEY = "AIzaSyDRmWBcjJ8-WKtlNhlUda5W5Cp8bo3P5GQ"  # Replace with your key
 EMBEDDING_MODEL_NAME = "all-MiniLM-L6-v2"
-RULES_PATH = "C:\\Users\\chris\\Downloads\\PanduOne\\rules.txt"  
-VECTOR_INDEX_PATH = "C:\\Users\\chris\\Downloads\\PanduOne\\Chunks\\pdf_index.faiss"
-CHUNKS_PATH = "C:\\Users\\chris\\Downloads\\PanduOne\\FAISS\\doc_chunks.txt"
+RULES_PATH = "C:\\Users\\chris\\Downloads\\PanduOne_Resources\\rules.txt"  
+VECTOR_INDEX_PATH = "C:\\Users\\chris\\Downloads\\PanduOne_Resources\\Chunks\\pdf_index.faiss"
+CHUNKS_PATH = "C:\\Users\\chris\\Downloads\\PanduOne_Resources\\FAISS\\doc_chunks.txt"
 TOP_K = 3
 
 # === Setup Functions ===   
