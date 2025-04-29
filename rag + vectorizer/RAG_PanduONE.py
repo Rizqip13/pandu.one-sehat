@@ -4,12 +4,12 @@ import faiss
 import numpy as np
 
 # === Configurations ===
-GENAI_API_KEY = "AIzaSyDRmWBcjJ8-WKtlNhlUda5W5Cp8bo3P5GQ"  # Replace with your key
+GENAI_API_KEY = "AIzaSyCCAyL9PYMyBMnwZYbo1P6B9a3JPlqr58o" #AIzaSyDRmWBcjJ8-WKtlNhlUda5W5Cp8bo3P5GQ"  # Replace with your key
 EMBEDDING_MODEL_NAME = "all-MiniLM-L6-v2"
-RULES_PATH = "C:\\Users\\chris\\Downloads\\PanduOne_Resources\\rules.txt"  
-VECTOR_INDEX_PATH = "C:\\Users\\chris\\Downloads\\PanduOne_Resources\\Chunks\\pdf_index.faiss"
-CHUNKS_PATH = "C:\\Users\\chris\\Downloads\\PanduOne_Resources\\FAISS\\doc_chunks.txt"
-TOP_K = 3
+RULES_PATH = "C:\\Users\\chris\\OneDrive\\Documents\\GitHub\\pandu.one-sehat\\PanduOne_Resources\\rules.txt"  
+VECTOR_INDEX_PATH = "C:\\Users\\chris\\OneDrive\\Documents\\GitHub\\pandu.one-sehat\\PanduOne_Resources\\Chunks\\pdf_index.faiss"
+CHUNKS_PATH = "C:\\Users\\chris\\OneDrive\\Documents\\GitHub\\pandu.one-sehat\\PanduOne_Resources\\FAISS\\doc_chunks.txt"
+TOP_K = 8
 
 # === Setup Functions ===   
 class RAGConversationalAgent:
@@ -22,11 +22,9 @@ class RAGConversationalAgent:
         self.genai_model = self._init_gemini(genai_api_key)
 
         # Load the rules from file if a path is given
-        if rules_path:
-            with open(rules_path, "r", encoding="utf-8") as f:
+        if RULES_PATH:
+            with open(RULES_PATH, "r", encoding="utf-8") as f:
                 self.rules = f.read().strip()
-        else:
-            self.rules = "You are a helpful assistant."
 
         self.top_k = top_k
         self.history = []  # List of (user_prompt, model_response)
@@ -42,7 +40,16 @@ class RAGConversationalAgent:
 
     def _retrieve_context(self, vector):
         D, I = self.vector_index.search(np.array(vector), k=self.top_k)
-        return [self.chunks[i].strip() for i in I[0]]
+        context_chunks = []
+        for i in I[0]:
+            line = self.chunks[i].strip()
+            if "\t" in line:
+                filename, chunk = line.split("\t", 1)
+                context_chunks.append(f"[{filename}]: {chunk}")
+            else:
+                context_chunks.append(line)  # Fallback in case format is old
+        return context_chunks
+
 
     def _build_prompt(self, user_prompt, retrieved_context):
         history_str = "\n".join(
@@ -76,7 +83,16 @@ class RAGConversationalAgent:
 def rag_gemini_pipeline(user_input, embed_model, vector_index, chunks, gemini_model):
     query_vector = embed_query(user_input, embed_model)
     top_indices = search_vector_db(query_vector, vector_index)
-    context_chunks = [chunks[i].strip() for i in top_indices]
+    context_chunks = []
+    for i in top_indices:
+        line = chunks[i].strip()
+        if "\t" in line:
+            filename, chunk = line.split("\t", 1)
+            context_chunks.append(f"[{filename}]: {chunk}")
+        else:
+            context_chunks.append(line)
+
+
     full_prompt = build_prompt(user_input, context_chunks)
     return generate_response(full_prompt, gemini_model)
 
