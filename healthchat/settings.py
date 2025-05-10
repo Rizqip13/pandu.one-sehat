@@ -46,7 +46,6 @@ INSTALLED_APPS = [
     "chat",
     "staff",
     'markdownify.apps.MarkdownifyConfig',
-    'markdowny',
 ]
 
 MIDDLEWARE = [
