@@ -133,7 +133,9 @@ if DEBUG:
 else:
     MEDIA_ROOT = "/var/www/pandu.one/media"
     STATIC_ROOT = "/var/www/pandu.one/static"
-
+    CSRF_TRUSTED_ORIGINS = [
+        "https://app.pandu.one",
+    ]
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
