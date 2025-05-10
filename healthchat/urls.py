@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
+    path("", lambda request: redirect("/chat/select-patient/")),
     path('admin/', admin.site.urls),
     path('chat/', include('chat.urls'))
 ]
