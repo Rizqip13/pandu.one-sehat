@@ -1,0 +1,23 @@
+Django==5.2
+django-htmx==1.23.0
+django-markdownify==0.9.5
+python-dotenv==1.1.0
+
+# Database
+psycopg==3.2.6
+
+# RAG stack
+faiss-cpu==1.11.0
+sentence-transformers==4.1.0
+scikit-learn==1.6.1
+numpy==2.2.5
+scipy==1.15.2
+
+# Gemini / Google API
+google-generativeai==0.8.5
+google-api-core==2.25.0rc1
+google-auth==2.40.1
+protobuf==5.29.4
+
+# Optional: markdown rendering safety
+bleach==6.2.0
