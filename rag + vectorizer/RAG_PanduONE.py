@@ -4,11 +4,15 @@ import faiss
 import numpy as np
 
 # === Configurations ===
-GENAI_API_KEY = "AIzaSyCCAyL9PYMyBMnwZYbo1P6B9a3JPlqr58o" #AIzaSyDRmWBcjJ8-WKtlNhlUda5W5Cp8bo3P5GQ"  # Replace with your key
+# GENAI_API_KEY = "AIzaSyCCAyL9PYMyBMnwZYbo1P6B9a3JPlqr58o" #AIzaSyDRmWBcjJ8-WKtlNhlUda5W5Cp8bo3P5GQ"  # Replace with your key
+GENAI_API_KEY = ""  # Replace with your key
 EMBEDDING_MODEL_NAME = "all-MiniLM-L6-v2"
-RULES_PATH = "C:\\Users\\chris\\OneDrive\\Documents\\GitHub\\pandu.one-sehat\\PanduOne_Resources\\rules.txt"  
-VECTOR_INDEX_PATH = "C:\\Users\\chris\\OneDrive\\Documents\\GitHub\\pandu.one-sehat\\PanduOne_Resources\\Chunks\\pdf_index.faiss"
-CHUNKS_PATH = "C:\\Users\\chris\\OneDrive\\Documents\\GitHub\\pandu.one-sehat\\PanduOne_Resources\\FAISS\\doc_chunks.txt"
+# RULES_PATH = "C:\\Users\\chris\\OneDrive\\Documents\\GitHub\\pandu.one-sehat\\PanduOne_Resources\\rules.txt"  
+# VECTOR_INDEX_PATH = "C:\\Users\\chris\\OneDrive\\Documents\\GitHub\\pandu.one-sehat\\PanduOne_Resources\\Chunks\\pdf_index.faiss"
+# CHUNKS_PATH = "C:\\Users\\chris\\OneDrive\\Documents\\GitHub\\pandu.one-sehat\\PanduOne_Resources\\FAISS\\doc_chunks.txt"
+RULES_PATH = "PanduOne_Resources/rules.txt"  
+VECTOR_INDEX_PATH = "PanduOne_Resources/Chunks/pdf_index.faiss"
+CHUNKS_PATH = "PanduOne_Resources/FAISS/doc_chunks.txt"
 TOP_K = 8
 
 # === Setup Functions ===   
@@ -114,12 +118,3 @@ if __name__ == "__main__":
 
         response = agent.chat(user_input)
         print("Gemini:", response, "\n")
-
-
-# import google.generativeai as genai
-
-# genai.configure(api_key="AIzaSyDRmWBcjJ8-WKtlNhlUda5W5Cp8bo3P5GQ")
-
-# models = genai.list_models()
-# for model in models:
-#     print(f"{model.name} | {model.supported_generation_methods}")

@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     "django_htmx",
     "chat",
     "staff",
+    'markdownify.apps.MarkdownifyConfig',
+    'markdowny',
 ]
 
 MIDDLEWARE = [
@@ -58,7 +60,7 @@ ROOT_URLCONF = 'healthchat.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / "templates"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -120,7 +122,27 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+STATICFILES_DIRS = [
+    BASE_DIR / "static",  # <-- Important!
+]
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+MARKDOWNIFY = {
+    "default": {
+        "MARKDOWN_EXTENSIONS": [
+            # "markdown.extensions.extra",
+            "fenced_code",
+            "codehilite",
+            # "markdown.extensions.tables",
+            "markdown.extensions.sane_lists",
+        ],
+        "WHITELIST_TAGS": [
+            "a", "abbr", "acronym", "b", "blockquote", "code", "em", "i",
+            "li", "ol", "strong", "ul", "p", "br", "pre", "h1", "h2", "h3", "h4", "h5", "h6"
+        ]
+    }
+}

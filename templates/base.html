@@ -1,15 +1,39 @@
 {% load django_htmx %}
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Pandu.one</title>
-	{% htmx_script %}
-	<link href="{% static 'css/output.css' %}" rel="stylesheet" type="text/css"/>
-</head>
-<body hx-headers='{"x-csrftoken": "{{ csrf_token }}"}'>
-	<button class="btn btn-primary">Hello DaisyUI</button>
-</body>
+<html lang="en" class="group/html">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Pandu.one</title>
+		{% htmx_script %}
+		<link href="{% static 'css/output.css' %}" rel="stylesheet" type="text/css"/>
+		<link href="{% static 'css/app.css' %}" rel="stylesheet" type="text/css"/>
+		<script>
+			try {
+					const localStorageItem = localStorage.getItem("__NEXUS_CONFIG_v2.0__")
+					if (localStorageItem) {
+							const theme = JSON.parse(localStorageItem).theme
+							if (theme !== "system") {
+									document.documentElement.setAttribute("data-theme", theme)
+							}
+					}
+			} catch (err) {
+					console.log(err)
+			}
+		</script>
+		<script src="https://unpkg.com/hyperscript.org@0.9.14"></script>
+	</head>
+	<body>
+		<div hx-headers='{"x-csrftoken": "{{ csrf_token }}"}' class="size-full flex flex-col min-h-screen overflow-auto">
+			<!--  Start: Layout - Content -->
+			<div id="layout-content">
+				{% block content %}
+				{% endblock %}
+			</div>
+			<!--  End: Layout - Content -->
+		</div>
+
+		{# include "partials/footer-scripts.html" #}
+	</body>
 </html>

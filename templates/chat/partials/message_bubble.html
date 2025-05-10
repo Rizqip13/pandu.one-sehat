@@ -1,0 +1,47 @@
+{% load markdownify %}
+{% load markdowny_tags %}
+{% comment %}
+Requires:
+- message (Message model instance)
+- current_user_role = "patient" or "agent"
+{% endcomment %}
+{% if message.sender == "bot" %}
+  <div class="scroll-target" _="on load call scrollChatBox2()">
+    <div class="prose prose-sm dark:prose-invert max-w-none bg-base-200 text-base-content px-4 py-3 mb-1 rounded-md whitespace-pre-line list-decimal pl-5">
+      {{ message.content|markdownify }}
+    </div>
+    <div class="chat-footer text-base-content/60 text-xs mb-2">
+      {{ message.timestamp|date:"h:i A" }}
+    </div>
+  </div>
+{% elif message.sender == "system" %}
+<div class="alert alert-dashed alert-warning flex items-center gap-2 text-sm mb-2" role="alert">
+	<span>{{ message.content }}</span>
+</div>
+{% else %}
+  <div 
+    class="chat {% if message.sender == current_user_role %}chat-end{% else %}chat-start{% endif %} mb-2"
+		_="on load call scrollChatBox()"
+  >
+    {% if message.sender == "agent" %}
+    <div class="chat-image avatar">
+      <div class="w-10 rounded-full overflow-hidden">
+        <img 
+          src="https://i.pravatar.cc/40?u={{ message.sender }}-{{ message.id }}" 
+          alt="{{ message.sender|title }} Avatar" 
+        />
+      </div>
+    </div>
+    {% endif %}
+    <div class="chat-bubble 
+                {% if message.sender == 'patient' %}bg-primary text-primary-content
+                {% elif message.sender == 'agent' %}bg-info text-info-content
+                {% else %}bg-base-300 text-base-content
+                {% endif %} text-sm max-w-[65ch] leading-relaxed">
+      {{ message.content }}
+    </div>
+    <div class="chat-footer text-base-content/60 text-xs">
+      {{ message.timestamp|date:"h:i A" }}
+    </div>
+  </div>
+{% endif %}

@@ -1,0 +1,15 @@
+<div id="bot-typing" _="
+wait random(200, 800) ms then
+remove .hidden from me
+">
+  <div class="prose prose-sm dark:prose-invert max-w-none bg-base-200 text-base-content px-4 py-3 mb-1 rounded-md">
+    <span class="loading loading-dots loading-sm"></span>
+  </div>
+  <!-- HTMX trigger to replace this block with actual bot reply -->
+  <div 
+    hx-get="{% url 'bot_response' %}" 
+    hx-target="#bot-typing" 
+    hx-swap="outerHTML"
+    hx-trigger="load">
+  </div>
+</div>

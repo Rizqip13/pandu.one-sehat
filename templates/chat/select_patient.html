@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="flex flex-col items-center justify-center min-h-screen bg-base-100">
+    <h1 class="text-3xl font-bold mb-8">Select Your Mock Patient Profile</h1>
+    <form action="{% url 'select_patient' %}" method="post" class="flex flex-col gap-4 w-80">
+        {% csrf_token %}
+        <button name="patient_type" value="patient_a" class="btn btn-primary w-full">Patient A</button>
+        <button name="patient_type" value="patient_b" class="btn btn-secondary w-full">Patient B</button>
+        <button name="patient_type" value="patient_c" class="btn btn-accent w-full">Patient C</button>
+    </form>
+</div>
+{% endblock %}
