@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="h-screen overflow-hidden flex">
+
+  <!-- Sidebar -->
+  <aside class="w-64 bg-base-200 p-4 flex flex-col justify-between">
+    <div>
+      <h1 class="text-xl font-bold mb-6">Pandu.One</h1>
+      <ul class="menu space-y-2">
+        <li><a href="{# url 'staff_dashboard' #}" class="btn btn-ghost justify-start">🗨️ Chats</a></li>
+        <li><a href="{# url 'staff_file_list' #}" class="btn btn-ghost justify-start">📁 RAG Files</a></li>
+      </ul>
+    </div>
+    <div class="text-xs text-base-content/60">
+      &copy; {{ now|date:"Y" }} Pandu.One<br>
+      <span class="block mt-1">Staff Panel</span>
+    </div>
+  </aside>
+
+  <!-- Main Content Area -->
+  <main class="flex-1 overflow-y-auto bg-base-100 p-6">
+    {% block content_inner %}{% endblock %}
+  </main>
+
+</div>
+{% endblock %}

@@ -14,12 +14,15 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+
 from django.contrib import admin
-from django.urls import path, include
-from django.shortcuts import redirect
+from django.urls import include, path
+
+from . import views as healthchat_views
 
 urlpatterns = [
-    path("", lambda request: redirect("/chat/select-patient/")),
-    path('admin/', admin.site.urls),
-    path('chat/', include('chat.urls'))
+    path("", healthchat_views.entry_point, name="entry_point"),
+    path("admin/", admin.site.urls),
+    path("chat/", include("chat.urls")),
+    # path('staff/', include('staff.urls'))
 ]

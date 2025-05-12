@@ -6,13 +6,21 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('chat', '0001_initial'),
+        ("chat", "0001_initial"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='message',
-            name='sender',
-            field=models.CharField(choices=[('patient', 'Patient'), ('bot', 'Bot'), ('agent', 'Agent'), ('system', 'System')], max_length=10),
+            model_name="message",
+            name="sender",
+            field=models.CharField(
+                choices=[
+                    ("patient", "Patient"),
+                    ("bot", "Bot"),
+                    ("agent", "Agent"),
+                    ("system", "System"),
+                ],
+                max_length=10,
+            ),
         ),
     ]

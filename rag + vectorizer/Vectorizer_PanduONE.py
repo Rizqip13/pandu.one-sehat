@@ -1,9 +1,10 @@
-import os
 import glob
+import os
+
 import faiss
 import numpy as np
-from sentence_transformers import SentenceTransformer
 from PyPDF2 import PdfReader
+from sentence_transformers import SentenceTransformer
 
 VECTOR_INDEX_PATH = "C:\\Users\\chris\\OneDrive\\Documents\\GitHub\\pandu.one-sehat\\PanduOne_Resources\\Chunks\\pdf_index.faiss"
 CHUNKS_PATH = "C:\\Users\\chris\\OneDrive\\Documents\\GitHub\\pandu.one-sehat\\PanduOne_Resources\\FAISS\\doc_chunks.txt"
@@ -11,6 +12,7 @@ PDF_FOLDER = "C:\\Users\\chris\\OneDrive\\Documents\\GitHub\\pandu.one-sehat\\Pa
 
 CHUNK_SIZE = 500  # characters per chunk
 CHUNK_OVERLAP = 50
+
 
 def read_pdfs_from_folder(folder_path):
     all_text = []
@@ -35,9 +37,10 @@ def chunk_text(text, chunk_size=CHUNK_SIZE, overlap=CHUNK_OVERLAP):
         start += chunk_size - overlap
     return chunks
 
+
 def embed_chunks(chunks, model_name="all-MiniLM-L6-v2"):
     model = SentenceTransformer(model_name)
-    
+
     # Extract just the chunk text (not filename)
     if isinstance(chunks[0], tuple):  # (filename, text)
         texts = [chunk[1] for chunk in chunks]
@@ -66,6 +69,7 @@ def save_index(embeddings, chunks):
         for filename, chunk in chunks:
             clean_chunk = chunk.strip().replace("\n", " ")
             f.write(f"{filename}\t{clean_chunk}\n")  # Tab-separated: filename + chunk
+
 
 if __name__ == "__main__":
     print("📥 Reading PDFs...")

@@ -1,0 +1,36 @@
+<div class="text-sm space-y-2">
+	<h2 class="text-lg font-bold mb-2">Patient Profile</h2>
+
+	<div><strong>Name:</strong> {{ patient.name }}</div>
+	<div><strong>Age:</strong> {{ patient.age }}</div>
+	<div><strong>Gender:</strong> {{ patient.gender }}</div>
+	<div><strong>Residence:</strong> {{ patient.residence }}</div>
+	<div><strong>Conditions:</strong> {{ patient.conditions|join:", " }}</div>
+	<div><strong>Medications:</strong> {{ patient.medications|default:"—" }}</div>
+
+	<!-- Blood Pressure -->
+	<div>
+		<strong>BP:</strong>
+		{% if patient.blood_pressure %}
+			<span class="text-success">
+				{{ patient.blood_pressure.systolic }}/{{ patient.blood_pressure.diastolic }} mmHg
+				({{ patient.blood_pressure.measured_on }})
+			</span>
+		{% else %}
+			<span class="text-warning">Not available</span>
+		{% endif %}
+	</div>
+
+	<!-- Blood Glucose -->
+	<div>
+		<strong>Glucose:</strong>
+		{% if patient.blood_glucose %}
+			<span class="text-success">
+				{{ patient.blood_glucose.value_mg_dl }} mg/dL
+				({{ patient.blood_glucose.type|title }}, {{ patient.blood_glucose.measured_on }})
+			</span>
+		{% else %}
+			<span class="text-warning">Not available</span>
+		{% endif %}
+	</div>
+</div>

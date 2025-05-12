@@ -5,7 +5,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Pandu.one</title>
+		<title>{% block title %}Pandu.one{% endblock %}</title>
 		{% htmx_script %}
 		<link href="{% static 'css/output.css' %}" rel="stylesheet" type="text/css"/>
 		<link href="{% static 'css/app.css' %}" rel="stylesheet" type="text/css"/>
@@ -23,6 +23,7 @@
 			}
 		</script>
 		<script src="https://unpkg.com/hyperscript.org@0.9.14"></script>
+		{% block extra_head %}{% endblock %}
 	</head>
 	<body>
 		<div hx-headers='{"x-csrftoken": "{{ csrf_token }}"}' class="size-full flex flex-col min-h-screen overflow-auto">
@@ -33,7 +34,5 @@
 			</div>
 			<!--  End: Layout - Content -->
 		</div>
-
-		{# include "partials/footer-scripts.html" #}
 	</body>
 </html>

@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="flex flex-col items-center justify-center min-h-screen bg-base-100 px-4">
+  <h1 class="text-3xl font-bold mb-8 text-center">Welcome to Pandu.One Chat</h1>
+
+  <div class="flex w-full max-w-4xl items-stretch">
+
+    <!-- Staff Card -->
+    <form method="post" class="card bg-base-200 rounded-box flex-1 p-6 shadow-md flex flex-col justify-between">
+      {% csrf_token %}
+      <input type="hidden" name="login_type" value="staff" />
+      <div>
+        <h2 class="text-xl font-semibold mb-4">Login as Staff</h2>
+        <p class="text-base text-base-content/60 mb-6">View chat sessions and respond to patients.</p>
+      </div>
+      <button class="btn btn-primary w-full mt-auto">Go to Staff Dashboard</button>
+    </form>
+
+    <!-- Divider -->
+    <div class="divider divider-horizontal">OR</div>
+
+    <!-- Patient Card -->
+    <form method="post" class="card bg-base-200 rounded-box flex-1 p-6 shadow-md">
+      {% csrf_token %}
+      <h2 class="text-xl font-semibold mb-4">Chat as Patient</h2>
+      <p class="text-base text-base-content/60 mb-6">Select a mock patient profile to start chatting:</p>
+      <div class="flex flex-col gap-3">
+        {% for patient in patients %}
+          <button name="patient_type" value="{{ patient.id }}" class="btn btn-secondary w-full text-left justify-start">
+            <div class="flex flex-col items-start">
+              <span class="font-semibold">{{ patient.name }} ({{ patient.age }} y.o.)</span>
+              <span class="text-sm text-white/60">{{ patient.occupation }} from {{ patient.residence }}</span>
+            </div>
+          </button>
+        {% endfor %}
+      </div>
+    </form>
+
+  </div>
+</div>
+{% endblock %}
