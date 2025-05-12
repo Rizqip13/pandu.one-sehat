@@ -1,6 +1,66 @@
 {% extends "staff/base.html" %}
 
 {% block content_inner %}
-<h1 class="text-2xl font-bold mb-4">RAG File Management</h1>
-<p class="text-base-content/60">This will show uploaded documents and file upload UI.</p>
+<!-- <h1 class="text-2xl font-bold mb-4">RAG File Management</h1> -->
+<!-- <p class="text-base-content/60">This will show uploaded documents and file upload UI.</p> -->
+<div id="layout-content">
+	<div class="grid grid-cols-1">
+		<div class="col-span-1">
+			<div class="flex items-center justify-between">
+				<div>
+					<h1 class="text-2xl font-bold mb-4">RAG File Management</h1>
+				</div>
+				<div class="inline-flex items-center gap-3">
+					<!--  Start: Upload Button (Modal) -->
+		
+					<button
+							class="btn btn-ghost border-base-300 btn-sm"
+							onclick="apps_file_upload_modal.showModal()"
+							aria-label="Upload file">
+							<span class="iconify lucide--upload size-4"></span>
+							Upload
+					</button>
+					<dialog id="apps_file_upload_modal" class="modal">
+							<div class="modal-box">
+									<div class="flex items-center justify-between">
+											<p class="font-medium">Upload Files</p>
+											<form method="dialog">
+													<button
+															class="btn btn-ghost btn-sm btn-circle"
+															aria-label="Close upload file modal">
+															<span
+																	class="iconify lucide--x size-5"></span>
+													</button>
+											</form>
+									</div>
+									<div class="mt-4">
+										<input type="file" class="file-input w-full" />
+										<div class="mt-5 text-end">
+												<button class="btn btn-primary btn-sm">
+														<span
+																class="iconify lucide--arrow-down-to-line size-4"></span>
+														Import
+												</button>
+										</div>
+									</div>
+							</div>
+							<form method="dialog" class="modal-backdrop">
+									<button>close</button>
+							</form>
+					</dialog>
+		
+					<!--  End: Upload Button (Modal) -->
+				</div>
+			</div>
+			<p class="text-sm text-base-content/60 mb-4">
+				This is a mockup for prototype demonstration only.
+			</p>
+			<div class="mt-3">
+				<!-- Start: Files (Table)  -->
+				{% include 'staff/partials/file-tables.html' %}	
+				<!-- End: Files (Table)  -->
+			</div>
+		</div>
+	</div>
+</div>
 {% endblock %}

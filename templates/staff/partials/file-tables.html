@@ -1,0 +1,192 @@
+<div class="card card-border bg-base-100">
+	<div class="card-body p-0">
+			<div
+					class="flex items-center justify-between gap-3 px-5 pt-5">
+					<div class="inline-flex items-center gap-3">
+							<div
+									class="dropdown dropdown-bottom dropdown-start">
+									<div
+											tabindex="0"
+											role="button"
+											class="btn btn-ghost btn-square border-base-300 btn-sm"
+											aria-label="Add">
+											<span
+													class="iconify lucide--plus size-4"></span>
+									</div>
+									<div
+											tabindex="0"
+											class="dropdown-content bg-base-100 rounded-box mt-2 w-52 shadow">
+											<ul class="menu w-full p-1.5">
+													<li>
+															<div>
+																	<span
+																			class="iconify lucide--folder size-4"></span>
+																	New Folder
+															</div>
+													</li>
+											</ul>
+											<hr class="border-base-300" />
+											<ul class="menu w-full p-1.5">
+													<li>
+															<div>
+																	<span
+																			class="iconify lucide--folder-up size-4"></span>
+																	Upload Folder
+															</div>
+													</li>
+													<li>
+															<div>
+																	<span
+																			class="iconify lucide--file-up size-4"></span>
+																	Upload File
+															</div>
+													</li>
+											</ul>
+											<hr class="border-base-300" />
+											<ul class="menu w-full p-1.5">
+													<li>
+															<div>
+																	<span
+																			class="iconify lucide--file-text size-4"></span>
+																	Create Document
+															</div>
+													</li>
+													<li>
+															<div>
+																	<span
+																			class="iconify lucide--file-spreadsheet size-4"></span>
+																	Create Sheet
+															</div>
+													</li>
+											</ul>
+									</div>
+							</div>
+							<button
+									class="btn-outline border-base-300 btn btn-sm hidden sm:flex">
+									<span
+											class="iconify lucide--folder-git-2 size-4"></span>
+									<span>Organize</span>
+							</button>
+					</div>
+					<div class="inline-flex items-center gap-3">
+							<label class="input input-sm">
+									<span
+											class="iconify lucide--search text-base-content/80 size-4"></span>
+									<input
+											class="grow"
+											placeholder="Search along files"
+											aria-label="Search chat"
+											type="search" />
+							</label>
+							<div class="hidden sm:block">
+									<select
+											class="select select-sm w-32"
+											aria-label="File type">
+											<option
+													value=""
+													disabled=""
+													selected="">
+													File type
+											</option>
+											<option>Images</option>
+											<option>Videos</option>
+											<option>Documents</option>
+											<option>Archives</option>
+											<option>Other</option>
+									</select>
+							</div>
+							<div class="inline-flex items-center gap-1">
+									<button
+											class="btn btn-sm btn-ghost btn-square"
+											aria-label="Grid">
+											<span
+													class="iconify lucide--grid-2x2 size-4"></span>
+									</button>
+									<button
+											class="btn btn-sm btn-soft btn-square"
+											aria-label="List">
+											<span
+													class="iconify lucide--list size-4"></span>
+									</button>
+							</div>
+					</div>
+			</div>
+			<div class="overflow-auto">
+				<table class="rounded-box mt-2 table w-full">
+					<thead>
+						<tr>
+							<th>File</th>
+							<th>Size</th>
+							<th>Uploaded At</th>
+							<th>Status</th>
+						</tr>
+					</thead>
+					<tbody>
+				
+						<!-- Example: Indexed File -->
+						<tr class="hover:bg-base-200">
+							<td class="flex items-center space-x-3 truncate">
+								<div class="bg-base-200 rounded-box p-1.5">
+									<span class="iconify lucide--file-text size-5"></span>
+								</div>
+								<div class="text-sm font-medium">KDIGO-CKD-2024.pdf</div>
+							</td>
+							<td>2.1 MB</td>
+							<td>2024-05-16 10:45</td>
+							<td>
+								<span class="text-success flex items-center gap-2">
+									<span>
+										<svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12l2 2l4-4"/></g></svg>
+									</span>
+									Indexed
+								</span>
+							</td>
+						</tr>
+				
+						<!-- Example: Failed File -->
+						<tr class="hover:bg-base-200">
+							<td class="flex items-center space-x-3 truncate">
+								<div class="bg-base-200 rounded-box p-1.5">
+									<span>
+										<svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M4 22h14a2 2 0 0 0 2-2V7l-5-5H6a2 2 0 0 0-2 2v4"/><path d="M14 2v4a2 2 0 0 0 2 2h4M8 12.5l-5 5m0-5l5 5"/></g></svg>
+									</span>
+								</div>
+								<div class="text-sm font-medium">NutritionGuide.pdf</div>
+							</td>
+							<td>870 KB</td>
+							<td>2024-05-15 14:10</td>
+							<td>
+								<span class="text-error flex items-center gap-2">
+									<span>
+										<svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m15 9l-6 6m0-6l6 6"/></g></svg>
+									</span>
+									Failed
+								</span>
+							</td>
+						</tr>
+				
+						<!-- Example: Pending File -->
+						<tr class="hover:bg-base-200">
+							<td class="flex items-center space-x-3 truncate">
+								<div class="bg-base-200 rounded-box p-1.5">
+									<span>
+										<svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></g></svg>
+									</span>
+								</div>
+								<div class="text-sm font-medium">DiabetesFAQ.txt</div>
+							</td>
+							<td>56 KB</td>
+							<td>2024-05-14 08:33</td>
+							<td>
+								<span class="text-warning flex items-center gap-2">
+									<span class="iconify lucide--clock size-4"></span>
+									Pending
+								</span>
+							</td>
+						</tr>
+				
+					</tbody>
+				</table>				
+			</div>
+	</div>
+</div>
