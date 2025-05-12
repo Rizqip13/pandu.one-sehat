@@ -55,16 +55,20 @@ class RAGConversationalAgent:
                 chat=chat_session, sender__in=["patient", "bot"]
             ).order_by("timestamp") 
 
-            history_cut = recent_messages[:-1]
+           
 
-            limited_history = history_cut[-(N_TURNS * 2):]
+            if len(recent_messages) > (N_TURNS * 2):
 
-            history_lines = []
-            for msg in limited_history:
-                role = "User" if msg.sender == "patient" else "Assistant"
-                history_lines.append(f"{role}: {msg.content}")
+                history_cut = recent_messages[:-1]
 
-            history_str = "\n".join(history_lines)
+                limited_history = history_cut[-(N_TURNS * 2):]
+
+                history_lines = []
+                for msg in limited_history:
+                    role = "User" if msg.sender == "patient" else "Assistant"
+                    history_lines.append(f"{role}: {msg.content}")
+
+                history_str = "\n".join(history_lines)
 
         # 📄 2. Add patient profile context
         profile_context = ""
@@ -99,8 +103,6 @@ class RAGConversationalAgent:
             f"Conversation:\n{history_str}\n"
             f"User: {user_prompt}"
         )
-
-        print(f"{prompt=}")
 
         # 🤖 6. Generate Gemini response
         response = self.genai_model.generate_content(prompt).text
