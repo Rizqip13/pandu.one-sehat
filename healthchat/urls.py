@@ -24,5 +24,5 @@ urlpatterns = [
     path("", healthchat_views.entry_point, name="entry_point"),
     path("admin/", admin.site.urls),
     path("chat/", include("chat.urls")),
-    # path('staff/', include('staff.urls'))
+    path('staff/', include('staff.urls'))
 ]

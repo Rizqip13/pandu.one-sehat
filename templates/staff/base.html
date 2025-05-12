@@ -4,19 +4,42 @@
 <div class="h-screen overflow-hidden flex">
 
   <!-- Sidebar -->
-  <aside class="w-64 bg-base-200 p-4 flex flex-col justify-between">
-    <div>
-      <h1 class="text-xl font-bold mb-6">Pandu.One</h1>
-      <ul class="menu space-y-2">
-        <li><a href="{# url 'staff_dashboard' #}" class="btn btn-ghost justify-start">🗨️ Chats</a></li>
-        <li><a href="{# url 'staff_file_list' #}" class="btn btn-ghost justify-start">📁 RAG Files</a></li>
-      </ul>
-    </div>
-    <div class="text-xs text-base-content/60">
-      &copy; {{ now|date:"Y" }} Pandu.One<br>
-      <span class="block mt-1">Staff Panel</span>
-    </div>
-  </aside>
+	<div id="layout-sidebar">
+		<div class="relative min-h-0 grow">
+			<div class="size-full">
+				<div id="sidebar-menu">
+					<h1 class="text-xl font-bold m-6 p-4">Pandu.One</h1>
+					<div class="group collapse">
+						<p class="sidebar-menu-title">Staff Panel</p>
+						<a class="sidebar-menu-item" href="{% url 'staff_dashboard' %}">
+								<span>
+									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2zm-8-7H7m10 4H7"/></svg>
+								</span>
+								Chats
+						</a>
+						<a class="sidebar-menu-item" href="{% url 'staff_file_list' %}">
+							<span>
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M20 10a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1h-2.5a1 1 0 0 1-.8-.4l-.9-1.2A1 1 0 0 0 15 3h-2a1 1 0 0 0-1 1v5a1 1 0 0 0 1 1Zm0 11a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1h-2.9a1 1 0 0 1-.88-.55l-.42-.85a1 1 0 0 0-.92-.6H13a1 1 0 0 0-1 1v5a1 1 0 0 0 1 1ZM3 5a2 2 0 0 0 2 2h3"/><path d="M3 3v13a2 2 0 0 0 2 2h3"/></g></svg>
+							</span>
+							RAG Files
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- control -->
+		<div class="mb-2">
+			<hr class="border-base-300" />
+			<ul class="menu w-full">
+					<li>
+							<a href="{% url 'entry_point' %}" class="flex items-center gap-2">
+									<span class="iconify lucide--log-out size-4"></span>
+									Switch Profile
+							</a>
+					</li>
+			</ul>
+	</div>
+	</div>
 
   <!-- Main Content Area -->
   <main class="flex-1 overflow-y-auto bg-base-100 p-6">

@@ -7,12 +7,12 @@ PATIENT_PROFILES = {
         "residence": "Banyuwangi, East Java",
         "occupation": "Farmer",
         "bpjs_status": "Active",
-        "medical_history": "Had blood pressure >160/100 three years ago, but has been normal since then.",
+        "medical_history": "Had blood pressure >160/100 three years ago, but never feel any symptomps, so never check up to doctor.",
         "current_lifestyle": "Does not attend regular checkups, still smokes, prefers salty foods.",
-        "medications": "Amlodipine 5mg daily",
+        "medications": "Take Amlodipine 5 mg irregularly, if he just feeling unwell",
         "conditions": ["Hypertension"],
         "blood_pressure": {
-            "systolic": 138,
+            "systolic": 160,
             "diastolic": 88,
             "measured_on": "April 20, 2024",
         },
@@ -26,34 +26,51 @@ PATIENT_PROFILES = {
             "Name: Arif Wijaya (Male, 57)\n"
             "Residence: Banyuwangi, East Java\n"
             "Occupation: Farmer\n"
-            "BPJS Status: Active\n"
-            "Medical History: Had blood pressure over 160/100 three years ago, but it's been normal since then.\n"
-            "Height: 165 cm, Weight: 64 kg (BMI: 23.5)\n"
-            "Most recent blood pressure: 138/88 mmHg (April 20, 2024)\n"
+            "BPJS Status: Inactive\n"
+            "Medical History: Had blood pressure >160/100 three years ago, but never feel any symptomps, so never check up to doctor.\n"
+            "Height: 160 cm, Weight: 64 kg (BMI: 25)\n"
+            "Most recent blood pressure: 160/88 mmHg (April 20, 2024)\n"
             "Fasting blood glucose: 105 mg/dL (April 20, 2024)\n"
             "Diagnosed conditions: Hypertension\n"
-            "Regular medications: Amlodipine 5mg daily\n"
+            "Regular medications: No\n"
             "Current Lifestyle: Does not attend routine checkups, still smokes, and prefers salty food.\n"
         ),
     },
     "patient_rini": {
         "id": "patient_rini",
         "name": "Rini Marlina",
-        "age": 49,
+        "age": 35,
         "gender": "Female",
         "residence": "Depok, West Java",
         "occupation": "Housewife",
-        "bpjs_status": "Inactive",
-        "medical_history": "Diagnosed with Type 2 Diabetes 5 years ago, takes oral medication regularly.",
-        "current_lifestyle": "No longer consumes sugary drinks, walks daily, and attends monthly health checks at the local clinic.",
+        "bpjs_status": "Active",
+        "medical_history": "Has diabetes mellitus type 2, managed by oral medication.",
+        "current_lifestyle": "Avoids sugary drinks, walks daily, and attends monthly health checkups.",
+        "medications": "Take Metformin 500 mg twice a day regularly",
+        "conditions": ["Diabetes Mellitus Type 2"],
+        "blood_pressure": {
+            "systolic": 130,
+            "diastolic": 88,
+            "measured_on": "April 20, 2024",
+        },
+        "blood_glucose": {
+            "value_mg_dl": 98,
+            "type": "Fasting blood glucose",
+            "measured_on": "April 20, 2024",
+        },
         "profile_context": (
             "Patient Profile:\n"
-            "Name: Rini Marlina (Female, 49)\n"
+            "Name: Rini Marlina (Female, 35)\n"
             "Residence: Depok, West Java\n"
             "Occupation: Housewife\n"
             "BPJS Status: Inactive\n"
-            "Medical History: Diagnosed with Type 2 Diabetes 5 years ago, currently managed with oral medication.\n"
-            "Current Lifestyle: Avoids sugary drinks, walks daily, and attends monthly health checkups.\n"
+            "Medical History: Has diabetes mellitus type 2, currently managed by oral medication.\n"
+            "Height: 165 cm, Weight: 60 kg (BMI: 22.03)\n"
+            "Most recent blood pressure: 160/88 mmHg (April 20, 2024)\n"
+            "Fasting blood glucose: 105 mg/dL (April 20, 2024)\n"
+            "Diagnosed conditions: Hypertension\n"
+            "Regular medications: No\n"
+            "Current Lifestyle: Does not attend routine checkups, still smokes, and prefers salty food.\n"
         ),
-    },
+    }
 }
