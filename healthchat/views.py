@@ -14,4 +14,6 @@ def entry_point(request):
             request.session.pop("chat_session_id", None)
             return redirect("chat_window")
 
+    request.session.pop("chat_session_id", None)
+    request.session.pop("patient_type", None)
     return render(request, "entry_point.html", {"patients": PATIENT_PROFILES.values()})

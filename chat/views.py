@@ -1,4 +1,7 @@
 import time
+import logging
+
+logger = logging.getLogger(__name__)
 
 import google.api_core.exceptions
 from django.http import HttpResponse, StreamingHttpResponse
@@ -13,6 +16,7 @@ from .rag_agent import rag_agent
 
 def generate_bot_reply(user_input, chat_session=None):
     if not rag_agent:
+        logger.warning("RAG agent not initialized.")
         return {
             "sender": "system",
             "content": "⚠️ Our AI system is currently unavailable. Please try again later.",
@@ -20,16 +24,18 @@ def generate_bot_reply(user_input, chat_session=None):
 
     try:
         reply_text = rag_agent.chat(user_input, chat_session=chat_session)
+        logger.info("Bot reply generated successfully.")
         return {"sender": "bot", "content": reply_text}
 
     except google.api_core.exceptions.ResourceExhausted:
+        logger.error("Gemini API quota exceeded (ResourceExhausted).")
         return {
             "sender": "system",
             "content": "⚠️ Our AI system has reached its daily usage limit. Please try again tomorrow or contact a support agent.",
         }
 
     except Exception as e:
-        print("[Gemini Error]", e)
+        logger.exception(f"Unexpected error while calling Gemini API, {e}")
         return {
             "sender": "system",
             "content": "❌ An unexpected error occurred while processing your request. Please try again in a moment or contact support.",
@@ -64,7 +70,7 @@ def chat_window(request):
         # Try to find an existing active session
         existing_session = ChatSession.objects.filter(
             patient_id=patient_type, is_active=True
-        ).last()
+        ).order_by("created_at").last()
 
         if existing_session:
             session = existing_session

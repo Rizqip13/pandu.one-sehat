@@ -22,7 +22,6 @@ PATIENT_PROFILES = {
             "measured_on": "April 20, 2024",
         },
         "profile_context": (
-            "Patient Profile:\n"
             "Name: Arif Wijaya (Male, 57)\n"
             "Residence: Banyuwangi, East Java\n"
             "Occupation: Farmer\n"
@@ -59,7 +58,6 @@ PATIENT_PROFILES = {
             "measured_on": "April 20, 2024",
         },
         "profile_context": (
-            "Patient Profile:\n"
             "Name: Rini Marlina (Female, 35)\n"
             "Residence: Depok, West Java\n"
             "Occupation: Housewife\n"
