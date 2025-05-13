@@ -68,7 +68,8 @@ def save_index(embeddings, chunks):
     with open(CHUNKS_PATH, "w", encoding="utf-8") as f:
         for filename, chunk in chunks:
             clean_chunk = chunk.strip().replace("\n", " ")
-            f.write(f"{filename}\t{clean_chunk}\n")  # Tab-separated: filename + chunk
+            name_only = os.path.splitext(filename)[0]
+            f.write(f"{name_only}\t{clean_chunk}\n") # Tab-separated: filename + chunk
 
 
 if __name__ == "__main__":
