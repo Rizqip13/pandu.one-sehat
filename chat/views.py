@@ -1,5 +1,5 @@
-import time
 import logging
+import time
 
 logger = logging.getLogger(__name__)
 
@@ -68,9 +68,11 @@ def chat_window(request):
 
     if not request.session.get("chat_session_id"):
         # Try to find an existing active session
-        existing_session = ChatSession.objects.filter(
-            patient_id=patient_type, is_active=True
-        ).order_by("created_at").last()
+        existing_session = (
+            ChatSession.objects.filter(patient_id=patient_type, is_active=True)
+            .order_by("created_at")
+            .last()
+        )
 
         if existing_session:
             session = existing_session
@@ -155,6 +157,16 @@ def new_chat_session(request):
 
     if not patient_type:
         return redirect("entry_point")
+
+    # Deactivate existing active session (if any)
+    current_session_id = request.session.get("chat_session_id")
+    if current_session_id:
+        try:
+            current_session = ChatSession.objects.get(id=current_session_id)
+            current_session.is_active = False
+            current_session.save()
+        except ChatSession.DoesNotExist:
+            pass  # if session doesn't exist, silently ignore
 
     # Create fresh session
     session = ChatSession.objects.create(patient_id=patient_type)

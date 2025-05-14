@@ -8,6 +8,7 @@ class ChatSession(models.Model):
     patient_id = models.CharField(max_length=50)
     created_at = models.DateTimeField(auto_now_add=True)
     is_active = models.BooleanField(default=True)
+    taken_over_by_staff = models.BooleanField(default=False)
 
     def __str__(self):
         return f"{self.patient_type} ({self.id})"

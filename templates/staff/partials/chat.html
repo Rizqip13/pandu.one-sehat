@@ -1,0 +1,37 @@
+<div class="card bg-base-100 shadow flex flex-col h-full max-h-screen">
+	{% if session %}
+
+    <!-- Header -->
+    <div class="flex items-center justify-between px-4 py-3 border-b border-base-300">
+      <div>
+        <p class="font-semibold">Chat with {{ session.patient_id|title }}</p>
+        <p class="text-xs text-base-content/60">Active</p>
+      </div>
+      <!-- Actions (optional) -->
+      {% include "staff/partials/take-over-btn.html" %}
+    </div>
+  
+    <!-- Message List -->
+    <div id="chat-box" class="flex-1 px-5 py-4 space-y-3 max-h-[calc(100vh-300px)] overflow-y-scroll">
+      {% for message in messages %}
+        {% include "chat/partials/message_bubble.html" with current_user_role="agent" %}
+      {% endfor %}
+    </div>
+  
+    <!-- Input Box -->
+    <form
+      hx-post="{% url 'staff_send_message' session.id %}"
+      hx-target="#chat-box"
+      hx-swap="beforeend"
+      hx-on::after-request="this.reset(); scrollChatBox2();"
+      class="bg-base-200 flex items-center gap-3 p-4 border-t border-base-300"
+    >
+      {% csrf_token %}
+      <input id="staff-message-input" class="input input-bordered grow" placeholder="Type a message..." name="message" required />
+      <button id="staff-message-send" class="btn btn-primary btn-circle" type="submit" >
+        <span class="iconify lucide--send-horizonal size-4.5"></span>
+      </button>
+    </form>
+		{% endif %}
+  </div>
+  

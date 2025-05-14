@@ -20,21 +20,13 @@ Requires:
 {% else %}
   <div 
     class="chat {% if message.sender == current_user_role %}chat-end{% else %}chat-start{% endif %} mb-2"
-		_="on load call scrollChatBox()"
+		_="on load call scrollChatBox2()"
   >
     {% if message.sender == "agent" %}
-    <div class="chat-image avatar">
-      <div class="w-10 rounded-full overflow-hidden">
-        <img 
-          src="https://i.pravatar.cc/40?u={{ message.sender }}-{{ message.id }}" 
-          alt="{{ message.sender|title }} Avatar" 
-        />
-      </div>
-    </div>
     {% endif %}
     <div class="chat-bubble 
                 {% if message.sender == 'patient' %}bg-primary text-primary-content
-                {% elif message.sender == 'agent' %}bg-info text-info-content
+                {% elif message.sender == 'agent' %}bg-secondary text-secondary-content
                 {% else %}bg-base-300 text-base-content
                 {% endif %} text-sm max-w-[65ch] leading-relaxed">
       {{ message.content }}

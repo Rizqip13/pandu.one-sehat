@@ -1,0 +1,22 @@
+<form method="post" 
+		hx-post="{% url 'staff_toggle_takeover' session.id %}" 
+		hx-target="this" 
+		class="inline">
+{% csrf_token %}
+{% if session.taken_over_by_staff %}
+	<button class="btn btn-outline btn-sm btn-success" type="submit"
+	_="on load 
+	remove [@disabled] from #staff-message-input 
+	then remove @disabled from #staff-message-send"
+	>
+	🔁 Hand Back to Bot
+	</button>
+{% else %}
+	<button class="btn btn-primary btn-sm" type="submit"
+	_="on load 
+		add [@disabled] to #staff-message-input 
+		then add @disabled to #staff-message-send">
+	👤 Take Over Chat
+	</button>
+{% endif %}
+</form>

@@ -51,16 +51,17 @@ class RAGConversationalAgent:
         # 🧠 1. Combine recent conversation history
         history_str = ""
         if chat_session:
-            recent_messages = list(Message.objects.filter(
-                chat=chat_session, sender__in=["patient", "bot"]
-            ).order_by("timestamp"))
-
+            recent_messages = list(
+                Message.objects.filter(
+                    chat=chat_session, sender__in=["patient", "bot"]
+                ).order_by("timestamp")
+            )
 
             if len(recent_messages) > (N_TURNS * 2):
 
                 history_cut = recent_messages[:-1]
 
-                history = history_cut[-(N_TURNS * 2):]
+                history = history_cut[-(N_TURNS * 2) :]
             elif len(recent_messages) > 1:
                 history = recent_messages[:-1]
             else:

@@ -70,5 +70,5 @@ PATIENT_PROFILES = {
             "Regular medications: No\n"
             "Current Lifestyle: Does not attend routine checkups, still smokes, and prefers salty food.\n"
         ),
-    }
+    },
 }

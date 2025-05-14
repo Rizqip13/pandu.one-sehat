@@ -1,6 +1,17 @@
 {% extends "staff/base.html" %}
 
 {% block content_inner %}
-<h1 class="text-2xl font-bold mb-4">Staff Dashboard</h1>
-<p class="text-base-content/60">This will show the chat session list.</p>
+<div id="layout-content">
+	<div class="col-span-1 lg:col-span-12">
+		<h1 class="text-2xl font-bold mb-4">Chat</h1>
+	</div>
+	<div class="grid grid-cols-1 gap-3 lg:grid-cols-12 pb-8">
+		<div class="lg:col-span-4 xl:col-span-4 2xl:col-span-3">
+			{% include 'staff/partials/chat-list.html' %}
+		</div>
+		<div class="lg:col-span-8 xl:col-span-8 2xl:col-span-9">
+			{% include 'staff/partials/chat.html' %}
+		</div>
+	</div>
+</div>
 {% endblock %}

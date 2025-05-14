@@ -1,0 +1,40 @@
+<!-- Start: Chat List -->
+<div class="card bg-base-100 shadow h-full">
+  <div class="card-body">
+
+    <!-- Search -->
+    <div class="flex items-center justify-between gap-3">
+      <label class="input">
+        <span class="iconify lucide--search text-base-content/80 size-4"></span>
+        <input class="grow" placeholder="Search chats" type="search" />
+      </label>
+    </div>
+
+    <!-- Scrollable chat list -->
+    <div class="mt-4 overflow-y-auto max-h-[calc(100vh-300px)] space-y-1">
+
+			{% for s in chat_sessions %}
+				<a href="{% url 'staff_dashboard' s.id %}"
+					class="rounded-box block px-3 py-2 transition-all {% if session and s.id == session.id %}bg-base-300{% else %}hover:bg-base-200{% endif %}">
+					<div class="flex justify-between">
+						<p class="text-sm font-medium">{{ s.patient_id|title }}</p>
+						<span class="text-xs text-base-content/60">{{ s.created_at|date:"H:i" }}</span>
+					</div>
+					<div class="text-sm text-base-content/80 min-h-4 line-clamp-1">
+						{% if s.messages.last.content %}
+						{{ s.messages.last.content|truncatechars:50 }}
+						{% else %}
+						-
+						{% endif %}
+					</div>
+				</a>
+			{% empty %}
+				<p class="text-sm text-base-content/60 px-2 py-4">No chat sessions available.</p>
+			{% endfor %}
+
+      <!-- Add more chat items here dynamically -->
+    </div>
+
+  </div>
+</div>
+<!-- End: Chat List -->

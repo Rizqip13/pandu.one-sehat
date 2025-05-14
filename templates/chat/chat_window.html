@@ -23,7 +23,7 @@
 			 <form hx-post="{% url 'send_message' %}" 
 						 hx-target="#chat-box" 
 						 hx-swap="beforeend" 
-						 hx-on::after-request="this.reset(); scrollChatBox();"
+						 hx-on::after-request="this.reset(); scrollChatBox2();"
 						 class="mt-5 flex gap-2">
 					 {% csrf_token %}
 					 <input name="content" type="text" placeholder="Type your message..." class="input input-bordered w-full" required>
@@ -36,5 +36,5 @@
 	 </div>
 </div>
 
-<script src="{% static 'js/chat.js' %}"></script>
+
 {% endblock %}
