@@ -114,15 +114,16 @@ def send_message(request):
         )
 
         # Render both messages to the chat box
-        patient_bubble = render_to_string(
-            "chat/partials/message_bubble.html",
-            {
+        context = {
                 "message": patient_message,
                 "session": session,
                 "current_user_role": "patient",
-            },
+            }
+        patient_bubble = render_to_string(
+            "chat/partials/message_bubble.html",
+            context,
         )
-        typing_bubble = render_to_string("chat/partials/bot_typing.html")
+        typing_bubble = render_to_string("chat/partials/bot_typing.html", context)
 
         return HttpResponse(patient_bubble + typing_bubble)
 

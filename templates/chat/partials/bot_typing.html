@@ -1,4 +1,4 @@
-{% if session.taken_over_by_staff %}
+{% if not session.taken_over_by_staff %}
 <div id="bot-typing">
   <div class="prose prose-sm dark:prose-invert max-w-none bg-base-200 text-base-content px-4 py-3 mb-1 rounded-md">
     <span class="loading loading-dots loading-sm"></span>
